@@ -15,7 +15,7 @@
         <h2 class="card">placeholder</h2>
         <form id="user-form">
             <label class="form-label">Search for City</label>
-            <input name="city" id="city" type="text" />
+            <input class="search-input" name="city" id="city" type="text" />
             <button type="submit" class="btn">Search</button>
         </form>
     </section>
@@ -24,11 +24,59 @@
         <button class="btn"></button>
         <button class="btn"></button>
     </div>
-    <div>
-        <h2></h2>
-        <div id="forecast" class="card forecast"></div>
+    <div class="currentweather">
+        <h2>placeholder for current weather<span id="result-text"></span></h2>
+        <div id="currentweatherdetails">
+            <div>Temperature</div>
+            <div>75</div>
+        </div>
+        <div id="currentweatherdetails">
+            <div>Humidity</div>
+            <div>88.2%</div>
+        </div>
+        <div id="currentweatherdetails">
+            <div>Wind Speed</div>
+            <div>15</div>
+        </div>
     </div>
-
+    <div id="forecastcontainer">
+        <h2>5 - Day Forecast</h2>
+        <div id="forecast" class="card forecast">
+            <p class="weather" id="day1"></p>
+            <div class="image"></div>
+            <p class="temp" id="day1temp"></p>
+            <p class="wind" id="day1wind"></p>
+            <p class="Humidity" id="day1humidity"></p>
+        </div>
+         <div id="forecast" class="card forecast">
+                <p class="weather" id="day2"></p>
+                <div class="image"></div>
+                <p class="temp" id="day2temp"></p>
+                <p class="wind" id="day2wind"></p>
+                <p class="Humidity" id="day2humidity"></p>
+        </div>
+        <div id="forecast" class="card forecast">
+            <p class="weather" id="day3"></p>
+            <div class="image"></div>
+            <p class="temp" id="day3temp"></p>
+            <p class="wind" id="day3wind"></p>
+            <p class="Humidity" id="day3humidity"></p>
+        </div>
+        <div id="forecast" class="card forecast">
+            <p class="weather" id="day4"></p>
+            <div class="image"></div>
+            <p class="temp" id="day4temp"></p>
+            <p class="wind" id="day4wind"></p>
+            <p class="Humidity" id="day4humidity"></p>
+        </div>
+        <div id="forecast" class="card forecast">
+            <p class="weather" id="day5"></p>
+            <div class="image"></div>
+            <p class="temp" id="day5temp"></p>
+            <p class="wind" id="day5wind"></p>
+            <p class="Humidity" id="day5humidity"></p>
+        </div>
+    </div>
     <script src="./script.js"></script>
 </body>
 
