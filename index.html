@@ -11,34 +11,38 @@
     <header class="weather title">
         <h1 class="title">Weather Dashboard</h1>
     </header>
+    <!--city input form-->
     <section class="search-box">
         <h2 class="card">placeholder</h2>
         <form id="user-form">
             <label class="form-label">Search for City</label>
-            <input class="search-input" name="city" id="city" type="text" />
+            <input class="search-input" name="cityInput" id="cityInput" type="text" />
             <button type="submit" class="btn">Search</button>
         </form>
     </section>
+    <!--search history-->
     <div class="card search-history">
         <button class="btn"></button>
         <button class="btn"></button>
         <button class="btn"></button>
     </div>
+    <!--current weather display card-->
     <div class="currentweather">
-        <h2>placeholder for current weather<span id="result-text"></span></h2>
+        <h2 id="cityName"><span id="cityName"></span></h2>
         <div id="currentweatherdetails">
             <div>Temperature</div>
-            <div>75</div>
+            <div class="temp"></div>
         </div>
         <div id="currentweatherdetails">
             <div>Humidity</div>
-            <div>88.2%</div>
+            <div class="humidity"></div>
         </div>
         <div id="currentweatherdetails">
             <div>Wind Speed</div>
-            <div>15</div>
+            <div class="windspeed"></div>
         </div>
     </div>
+    <!--5 day forecast cards-->
     <div id="forecastcontainer">
         <h2>5 - Day Forecast</h2>
         <div id="forecast" class="card forecast">
