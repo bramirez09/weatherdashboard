@@ -11,6 +11,10 @@ header {
     text-align: center;
 }
 
+.hide{
+    display: none;
+}
+
 .card {
     margin: 0 0 20px 0;
     border: 1px solid ;
