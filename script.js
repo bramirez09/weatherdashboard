@@ -58,8 +58,8 @@ function searchApi(city) {
             weatherIcon.setAttribute("src", iconurl);
             todaysDate.innerHTML = "Date: " + today;
             tempEl.innerHTML = "Temperature: " + temp + "°F";
-            humidityEl.innerHTML = "Humidity: " + humidity;
-            windSpeed.innerHTML = "Wind Speed: " + windspeed;
+            humidityEl.innerHTML = "Humidity: " + humidity + "%";
+            windSpeed.innerHTML = "Wind Speed: " + windspeed + "mph";
             console.log(temp, humidity, windspeed)
             printForecast(data);
         })
@@ -76,9 +76,22 @@ function printForecast(forecastData) {
         // console.log(forecastData.list[i].dt_txt);
         var forecastContainer = document.getElementById("forecast");
         var date = document.createElement("h3");
-
-        forecastContainer.textContent = forecastData.list[i].dt_txt;
-
+        var temperature = document.createElement("h4");
+        var humid = document.createElement("h5");
+        var winSpeed = document.createElement("h6");
+        var weatherpic = document.createElement("img");
+        var weatherForecastIcon = forecastData.list[i].weather[0].icon;
+        var weatherIconurl = "https://openweathermap.org/img/wn/" + weatherForecastIcon + "@2x.png";
+        weatherpic.setAttribute("src", weatherIconurl);
+        date.textContent = forecastData.list[i].dt_txt;
+        temperature.textContent = forecastData.list[i].main.temp + "°F";
+        humid.textContent = forecastData.list[i].main.humidity + "%";
+        winSpeed.textContent = forecastData.list[i].wind.speed + "mph";
+        forecastContainer.append(date);
+        forecastContainer.append(temperature);
+        forecastContainer.append(humid);
+        forecastContainer.append(winSpeed);
+        forecastContainer.append(weatherpic);
     }
 }
 
