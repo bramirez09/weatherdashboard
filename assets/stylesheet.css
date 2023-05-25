@@ -11,39 +11,27 @@ header {
     text-align: center;
 }
 
-.hide{
-    display: none;
-}
-
-.card {
-    margin: 0 0 20px 0;
-    border: 1px solid ;
-    border-radius: 10px;
-}
 .search-box {
     background-color: floralwhite;
     border: 1px solid;
     border-radius: 10px;
-    float: left;  
     display: flex;
-    align-items: center; 
-    justify-content: space-around;
-    flex-direction: column;
+    justify-content: flex-start;
+    flex-direction: row;  
+}
+.search-history{
+    display: flex;
 }
 
 img{
-    max-width: 10%;
-    max-height: 10%;
+    max-width: 15%;
+    max-height: 15%;
+}
+.card{
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: flex-start;
 }
 
-.search-history{
-    background-color: floralwhite;
-    border: 1px solid;
-    border-radius: 10px;
-    float: left;  
-    display: flex;
-    align-items: center; 
-    justify-content: space-around;
-    flex-direction: column;
-    flex-wrap: wrap;
-}
+

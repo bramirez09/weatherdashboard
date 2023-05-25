@@ -14,7 +14,7 @@
     </header>
     <!--city input form-->
     <section class="search-box">
-        <h2 class="card">placeholder</h2>
+        <h2 class="card"></h2>
         <form id="user-form">
             <label class="form-label">Search for City</label>
             <input class="search-input" name="cityInput" id="cityInput" type="text" />
@@ -22,13 +22,12 @@
         </form>
     </section>
     <!--search history-->
-    <div class="card search-history">
-        <button class="btn"></button>
-        <button class="btn"></button>
-        <button class="btn"></button>
+    <div class="search-history" id="search-history">
+        <h1>Search History</h1>
+            <button id="btn" class="btn"></button>
     </div>
     <!--current weather display card-->
-    <div class="currentweather">
+    <div class="currentweather card">
         <h2 id="cityName"><span id="cityName"></span></h2>
         <h2 id="currentDate"></h2>
         <div id="currentweatherdetails">
@@ -41,8 +40,7 @@
         </div>
     </div>
     <!--5 day forecast cards-->
-    <div id="forecastcontainer" class="forecastcontainer">
-                <h2>5 - Day Forecast</h2>
+    <div id="forecastcontainer" class="forecastcontainer card">
                 <div id="forecast" class="card forecast">
                 </div>
             </div>

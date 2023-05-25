@@ -1,8 +1,6 @@
 var searchBoxEl = document.querySelector(".search-box");
 var resultTextEl = document.querySelector(".result-text");
-// var currentDayEl = $("#currentDay")
-// var currentweather = document.querySelector(".currentweather");
-
+var cityButton = document.getElementById("cityName")
 var forecastEl = document.getElementById("#forecast");
 var apiKey = "6d31b19eb7d07b9d70d1e6b48620ae60";
 
@@ -25,8 +23,12 @@ function getLocation(cityInput) {
     // location
     var newName = document.getElementById("cityInput");
     var cityName = document.getElementById("cityName");
-    cityName.innerHTML = "--" + newName.value + "--"
-
+    var searchHistoryContainer = document.getElementById("search-history");
+    var citySearched = document.createElement("button");
+    citySearched.setAttribute("id",cityName);
+    citySearched.textContent = newName.value;
+    searchHistoryContainer.append(citySearched);
+    cityName.innerHTML = newName.value;
     searchApi(cityInput);
 }
 
@@ -95,9 +97,10 @@ function printForecast(forecastData) {
     }
 }
 
-
-
+function callCityButton(){
+    
+}
 
 searchBoxEl.addEventListener("submit", handleSearchForm);
-
+cityButton.addEventListener(cityButton,callCityButton);
 
