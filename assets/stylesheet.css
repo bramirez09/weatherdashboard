@@ -28,6 +28,8 @@ img{
     max-height: 15%;
 }
 .card{
+    border: 1px solid;
+    border-radius: 10px;
     display: flex;
     flex-direction: row;
     align-items: center; 

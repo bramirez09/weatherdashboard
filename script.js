@@ -22,20 +22,22 @@ function getLocation(cityInput) {
     console.log("this is in geolocation:", cityInput);
     // location
     var newName = document.getElementById("cityInput");
-    var cityName = document.getElementById("cityName");
+    
     var searchHistoryContainer = document.getElementById("search-history");
     var citySearched = document.createElement("button");
     citySearched.setAttribute("id",cityName);
     citySearched.textContent = newName.value;
     searchHistoryContainer.append(citySearched);
-    cityName.innerHTML = newName.value;
+    // cityName.innerHTML = newName.value;
     searchApi(cityInput);
+    // document.querySelector(".search-input").innerHTML="";
     citySearched.addEventListener("click",callCityButton);
+    // document.getElementById("currentweather").innerHTML="";
 }
 
 
 function searchApi(city) {
-
+    
     var latLonUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`
     fetch(latLonUrl).then(function (response) {
         return response.json();
@@ -46,19 +48,22 @@ function searchApi(city) {
         fetch(locQueryUrl).then(function (response) {
             return response.json();
         }).then(function (data) {
-            // console.log(data);
+            console.log(data);
+            var name = data.city.name;
             var temp = data.list[0].main.temp;
             var humidity = data.list[0].main.humidity;
             var windspeed = data.list[0].wind.speed;
             var weathericon = data.list[0].weather[0].icon;
             var today = data.list[0].dt_txt;
             var iconurl = "https://openweathermap.org/img/wn/" + weathericon + "@2x.png";
+            var cityName = document.getElementById("cityName");
             var todaysDate = document.querySelector(".todaysdate");
             var tempEl = document.querySelector(".temp");
             var humidityEl = document.querySelector(".humidity");
             var windSpeed = document.querySelector(".windspeed");
             var weatherIcon = document.getElementById("img1");
             weatherIcon.setAttribute("src", iconurl);
+            cityName.innerHTML = name;
             todaysDate.innerHTML = "Date: " + today;
             tempEl.innerHTML = "Temperature: " + temp + "°F";
             humidityEl.innerHTML = "Humidity: " + humidity + "%";
@@ -71,11 +76,15 @@ function searchApi(city) {
 }
 
 function printForecast(forecastData) {
-    // console.log(forecastData);
+
     //for loop here for 5 day forecast
+    document.getElementById("forecast").innerHTML="";
+    console.log(forecastData);
+
     for (i = 8; i < forecastData.list.length; i=i+8) {
         // console.log(forecastData.list[0].main.temp);
         // console.log(forecastData.list[i].dt_txt);
+        
         var forecastContainer = document.getElementById("forecast");
         var date = document.createElement("h3");
         var temperature = document.createElement("h4");
@@ -85,10 +94,10 @@ function printForecast(forecastData) {
         var weatherForecastIcon = forecastData.list[i].weather[0].icon;
         var weatherIconurl = "https://openweathermap.org/img/wn/" + weatherForecastIcon + "@2x.png";
         weatherpic.setAttribute("src", weatherIconurl);
-        date.textContent = forecastData.list[i].dt_txt;
-        temperature.textContent = forecastData.list[i].main.temp + "°F";
-        humid.textContent = forecastData.list[i].main.humidity + "%";
-        winSpeed.textContent = forecastData.list[i].wind.speed + "mph";
+        date.innerHTML = forecastData.list[i].dt_txt;
+        temperature.innerHTML = forecastData.list[i].main.temp + "°F";
+        humid.innerHTML = forecastData.list[i].main.humidity + "%";
+        winSpeed.innerHTML = forecastData.list[i].wind.speed + "mph";
         forecastContainer.append(date);
         forecastContainer.append(temperature);
         forecastContainer.append(humid);
@@ -100,7 +109,8 @@ function printForecast(forecastData) {
 function callCityButton(){
     console.log(this.textContent);
     getLocation(this.textContent);
-    printForecast(this.data);
+    searchApi(this.textContent);
+    printForecast(this.textContent);
     // console.log(cityButton.textContent);
 }
 
