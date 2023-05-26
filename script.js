@@ -38,13 +38,13 @@ function getLocation(cityInput) {
 
 function searchApi(city) {
     
-    var latLonUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`
+    var latLonUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`
     fetch(latLonUrl).then(function (response) {
         return response.json();
     }).then(function (data) {
         var lat = data[0].lat;
         var lon = data[0].lon;
-        var locQueryUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+        var locQueryUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
         fetch(locQueryUrl).then(function (response) {
             return response.json();
         }).then(function (data) {
@@ -86,18 +86,18 @@ function printForecast(forecastData) {
         // console.log(forecastData.list[i].dt_txt);
         
         var forecastContainer = document.getElementById("forecast");
-        var date = document.createElement("h3");
-        var temperature = document.createElement("h4");
-        var humid = document.createElement("h5");
-        var winSpeed = document.createElement("h6");
+        var date = document.createElement("li");
+        var temperature = document.createElement("li");
+        var humid = document.createElement("li");
+        var winSpeed = document.createElement("li");
         var weatherpic = document.createElement("img");
         var weatherForecastIcon = forecastData.list[i].weather[0].icon;
         var weatherIconurl = "https://openweathermap.org/img/wn/" + weatherForecastIcon + "@2x.png";
         weatherpic.setAttribute("src", weatherIconurl);
-        date.innerHTML = forecastData.list[i].dt_txt;
-        temperature.innerHTML = forecastData.list[i].main.temp + "°F";
-        humid.innerHTML = forecastData.list[i].main.humidity + "%";
-        winSpeed.innerHTML = forecastData.list[i].wind.speed + "mph";
+        date.innerHTML = "Date: " + forecastData.list[i].dt_txt;
+        temperature.innerHTML = "Temp: " + forecastData.list[i].main.temp + "°F";
+        humid.innerHTML = "Humidity: " + forecastData.list[i].main.humidity + "%";
+        winSpeed.innerHTML = "Wind Speed: " + forecastData.list[i].wind.speed + "mph";
         forecastContainer.append(date);
         forecastContainer.append(temperature);
         forecastContainer.append(humid);
