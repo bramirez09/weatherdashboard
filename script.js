@@ -30,6 +30,7 @@ function getLocation(cityInput) {
     searchHistoryContainer.append(citySearched);
     cityName.innerHTML = newName.value;
     searchApi(cityInput);
+    citySearched.addEventListener("click",callCityButton);
 }
 
 
@@ -62,7 +63,7 @@ function searchApi(city) {
             tempEl.innerHTML = "Temperature: " + temp + "°F";
             humidityEl.innerHTML = "Humidity: " + humidity + "%";
             windSpeed.innerHTML = "Wind Speed: " + windspeed + "mph";
-            console.log(temp, humidity, windspeed)
+            console.log("temp:"+temp,"humidity:"+ humidity, "windspeed:"+windspeed)
             printForecast(data);
         })
 
@@ -70,8 +71,7 @@ function searchApi(city) {
 }
 
 function printForecast(forecastData) {
-    // var currentWeather = document.querySelector("#currentweatherdetails");
-    console.log(forecastData);
+    // console.log(forecastData);
     //for loop here for 5 day forecast
     for (i = 8; i < forecastData.list.length; i=i+8) {
         // console.log(forecastData.list[0].main.temp);
@@ -98,9 +98,12 @@ function printForecast(forecastData) {
 }
 
 function callCityButton(){
-    
+    console.log(this.textContent);
+    getLocation(this.textContent);
+    printForecast(this.data);
+    // console.log(cityButton.textContent);
 }
 
 searchBoxEl.addEventListener("submit", handleSearchForm);
-cityButton.addEventListener(cityButton,callCityButton);
+cityButton.addEventListener("click",callCityButton);
 
